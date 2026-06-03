@@ -126,7 +126,7 @@ export const useStore = create<AppState>()(
       setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
     }),
     {
-      name: 'cogniplan-storage', // key in local storage
+      name: 'study-planner-storage', // key in local storage
       partialize: (state) => Object.fromEntries(
         Object.entries(state).filter(([key]) => !['isMobileMenuOpen'].includes(key))
       ) as AppState,

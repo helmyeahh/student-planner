@@ -7,8 +7,8 @@ import { Topbar } from "@/components/layout/Topbar";
 const inter = Inter({ subsets: ["latin"], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: "CogniPlan - AI Student Planner",
-  description: "An AI-powered student planner using Gemini 2.5 Pro",
+  title: "Study Planner - AI Student Planner",
+  description: "An AI-powered student planner using Gemini 3.5 Flash",
 };
 
 export default function RootLayout({

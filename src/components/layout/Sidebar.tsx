@@ -62,7 +62,7 @@ export function Sidebar() {
                 <h2 className="font-bold text-gray-900 text-sm flex items-center gap-1 hover:text-[#6366f1] transition-colors">
                   {user.name}'s Hub <Edit2 className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </h2>
-                <p className="text-xs text-gray-500">Productivity Active</p>
+                <p className="text-xs text-gray-500 font-semibold text-purple-600">Study Planner</p>
               </div>
             </div>
             <button 
