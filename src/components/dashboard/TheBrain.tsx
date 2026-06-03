@@ -4,7 +4,7 @@ import { Sparkles, Loader2, PlusCircle, Check } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
 export function TheBrain() {
-  const { journals, subjects, addTask } = useStore();
+  const { journals, subjects, tasks, addTask } = useStore();
   const [isScheduling, setIsScheduling] = useState(false);
   const [advice, setAdvice] = useState<string | null>(null);
   const [addedToList, setAddedToList] = useState(false);
@@ -24,6 +24,7 @@ export function TheBrain() {
             const subject = subjects.find(s => s.id === j.subject_id);
             return { subject: subject?.name, rating: j.rating, notes: j.notes };
           }),
+          upcomingDeadlines: tasks.filter(t => !t.completed).map(t => ({ title: t.title, type: t.type, time: t.time })),
         }),
       });
       

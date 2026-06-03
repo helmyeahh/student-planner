@@ -37,6 +37,7 @@ interface AppState {
   subjects: Subject[];
   tasks: Task[];
   journals: Journal[];
+  isMobileMenuOpen: boolean;
   
   // Actions
   setUserName: (name: string) => void;
@@ -51,6 +52,7 @@ interface AppState {
   deleteTask: (id: string) => void;
   
   addJournal: (journal: Omit<Journal, 'id'>) => void;
+  setMobileMenuOpen: (open: boolean) => void;
 }
 
 export const useStore = create<AppState>()(
@@ -85,6 +87,7 @@ export const useStore = create<AppState>()(
         { id: '3', title: 'Math Problem Set', type: 'normal', time: '', completed: true },
       ],
       journals: [],
+      isMobileMenuOpen: false,
 
       setUserName: (name) => set((state) => ({ user: { ...state.user, name } })),
 
@@ -119,9 +122,14 @@ export const useStore = create<AppState>()(
       addJournal: (journal) => set((state) => ({
         journals: [...state.journals, { ...journal, id: Date.now().toString() }]
       })),
+
+      setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
     }),
     {
       name: 'cogniplan-storage', // key in local storage
+      partialize: (state) => Object.fromEntries(
+        Object.entries(state).filter(([key]) => !['isMobileMenuOpen'].includes(key))
+      ) as AppState,
     }
   )
 );

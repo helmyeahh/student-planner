@@ -5,7 +5,7 @@ import { useStore } from '@/store/useStore';
 import { format } from 'date-fns';
 
 export default function JournalPage() {
-  const { journals, subjects } = useStore();
+  const { journals, subjects, tasks } = useStore();
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [evaluation, setEvaluation] = useState<string | null>(null);
 
@@ -23,6 +23,7 @@ export default function JournalPage() {
             const subject = subjects.find(s => s.id === j.subject_id);
             return { subject: subject?.name, rating: j.rating, notes: j.notes };
           }),
+          upcomingDeadlines: tasks.filter(t => !t.completed).map(t => ({ title: t.title, type: t.type, time: t.time })),
         }),
       });
       

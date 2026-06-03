@@ -13,10 +13,12 @@ export async function POST(req: Request) {
       Here is the student's data:
       Today's Subjects: ${JSON.stringify(subjects)}
       Recent Journal Ratings (1-5, 5 is best): ${JSON.stringify(journals)}
-      Upcoming Deadlines: ${JSON.stringify(upcomingDeadlines)}
+      Upcoming Deadlines/Tasks: ${JSON.stringify(upcomingDeadlines)}
 
-      Based on this data, provide ONE short, actionable, and encouraging sentence of advice for today's study session. 
-      Focus on subjects with low understanding ratings.
+      Based on this data, identify which subjects are most urgent (due to low journal ratings of 1-3, pending deadlines, or high difficulty).
+      Provide a specific study schedule recommendation or sequence focusing on those urgent subjects.
+      Keep it to one concise, highly actionable, and encouraging sentence (max 30 words) so it can fit nicely as a to-do item.
+      Please write the response in Indonesian.
     `;
 
     const response = await ai.models.generateContent({
